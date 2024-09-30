@@ -13,10 +13,11 @@ public class Test2 {
     private static final String LOCK_TWO = "LockTwo";
     private static final String PETERSON = "Peterson";
     private static final String FILTER = "Filter";
-
+    private static final String BAKERY = "Bakery";
+    private static final String TREEPETERSON = "TreePeterson";
     public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, InterruptedException {
-        String lockClass = (args.length == 0 ? PETERSON : args[0]);
-        int threadCount = (args.length <= 1 ? 16 : Integer.parseInt(args[1]));
+        String lockClass = (args.length == 0 ? TREEPETERSON : args[0]);
+        int threadCount = (args.length <= 1 ? 2 : Integer.parseInt(args[1]));
         int totalIters = (args.length <= 2 ? 64000 : Integer.parseInt(args[2]));
         int iters = totalIters / threadCount;
 

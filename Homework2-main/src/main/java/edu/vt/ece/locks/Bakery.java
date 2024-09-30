@@ -9,10 +9,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Bakery implements Lock {
     private int n;
     private volatile AtomicBoolean[] flag;
+
     private volatile Timestamp[] label;
     private TimestampSystem timestampSystem;
-    private ThreadId threadId;
-    private Counter counter;
     public Bakery() {
         this(2);
     }
@@ -22,7 +21,7 @@ public class Bakery implements Lock {
         this.flag = new AtomicBoolean[n];
         this.label = new Timestamp[n];
         this.timestampSystem = new BakeryTimestampSystem(n);
-        this.threadId = new TestThread(counter);
+
 
         for(int i =0 ; i < n ; i++){
             this.flag[i]= new AtomicBoolean();
