@@ -51,14 +51,13 @@ public class Bakery implements Lock {
         timestampSystem.label(label[i],i);
         for(int k=0; k < n ; k++){
             if(k!=i){
-                while(flag[k].get() && label[k] !=null && (label[k].compare(label[i]) ) ){
+                while(flag[k].get() && label[k] != null && (label[k].compare(label[i]) ) ){
 
                 }
             }
         }
 
     }
-
     @Override
     public void unlock() {
         flag[((ThreadId)Thread.currentThread()).getThreadId()].set(false);
@@ -93,16 +92,15 @@ public class Bakery implements Lock {
                 timestamps[i] = new BakeryTimestamp(0,i);
             }
         }
-        @Override
-        public Timestamp[] scan() {
-
-            return timestamps;
-        }
 
         @Override
         public void label(Timestamp timestamp, int i) {
             timestamps[i] = timestamp;
         }
+        @Override
+        public Timestamp[] scan() {
 
+            return timestamps;
+        }
     }
 }
